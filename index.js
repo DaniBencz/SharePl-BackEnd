@@ -15,7 +15,9 @@ const conn = mysql.createConnection({
 });
 
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+  console.log(__dirname)
+  res.sendFile(__dirname + '/assets/how-cat-rolls.jpg')
+  //res.send('Hello World!')
 })
 
 app.listen(PORT, () => {
