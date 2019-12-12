@@ -14,6 +14,13 @@ const conn = mysql.createConnection({
   multipleStatements: true
 });
 
+// custom middleware
+const LoggerMiddleware = (req,res,next) =>{
+  console.log(`Logged  ${req.url}  ${req.method} -- ${new Date()}`)
+  next()
+}
+app.use(LoggerMiddleware)
+
 app.get('/', (req, res) => {
   console.log(__dirname)
   res.sendFile(__dirname + '/assets/how-cat-rolls.jpg')
